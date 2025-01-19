@@ -15,6 +15,7 @@
         .form-group button { width: 100%; padding: 12px; background-color: #00ffcc; color: white; border: none; border-radius: 5px; font-size: 18px; cursor: pointer; }
         .form-group button:hover { background-color: #00cc99; }
         .error-message { color: red; text-align: center; }
+        .success-message { color: green; text-align: center; }
     </style>
 </head>
 <body>
@@ -42,12 +43,8 @@
                     <input type="text" id="musicTitle" placeholder="Müzik başlığını girin">
                 </div>
                 <div class="form-group">
-                    <label for="musicFile">Müzik Dosyası:</label>
-                    <input type="file" id="musicFile">
-                </div>
-                <div class="form-group">
-                    <label for="musicImage">Resim Dosyası:</label>
-                    <input type="file" id="musicImage">
+                    <label for="musicLink">İndirme Linki:</label>
+                    <input type="url" id="musicLink" placeholder="İndirme linkini girin">
                 </div>
                 <div class="form-group">
                     <button onclick="addMusic()">Müziği Ekle</button>
@@ -97,25 +94,23 @@
 
         function addMusic() {
             const title = document.getElementById("musicTitle").value;
-            const musicFile = document.getElementById("musicFile").files[0];
-            const musicImage = document.getElementById("musicImage").files[0];
+            const musicLink = document.getElementById("musicLink").value;
 
-            if (!title || !musicFile || !musicImage) {
+            if (!title || !musicLink) {
                 document.getElementById("errorMessage").classList.remove("hidden");
                 document.getElementById("successMessage").classList.add("hidden");
                 return;
             }
 
-            // Burada dosyaları ve verileri backend'e gönderebilirsiniz
-            // Şu an sadece frontend kısmı yapılmıştır
-
+            // Burada sadece frontend tarafında işlemi gösteriyoruz
             document.getElementById("errorMessage").classList.add("hidden");
             document.getElementById("successMessage").classList.remove("hidden");
 
-            // Formu sıfırlamak için
+            // Başarıyla müzik ekleme işlemi sonrasında
+            // index.html sayfasına bu bilgileri eklemeniz gerekecek
+
             document.getElementById("musicTitle").value = '';
-            document.getElementById("musicFile").value = '';
-            document.getElementById("musicImage").value = '';
+            document.getElementById("musicLink").value = '';
         }
     </script>
 </body>

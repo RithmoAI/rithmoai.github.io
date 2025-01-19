@@ -1,0 +1,320 @@
+/* Genel stil ayarları */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #2a2a2a;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+header .logo-container img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
+}
+
+nav ul li a:hover {
+    background-color: #00ffcc;
+    color: #2a2a2a;
+    box-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc;
+    transform: translateY(-5px);
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #444;
+    color: white;
+}
+
+.music-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.music-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.music-item img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.music-item .download-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #00ffcc;
+    color: #2a2a2a;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    transition: all 0.3s ease;
+}
+
+.music-item .download-btn:hover {
+    background-color: #2a2a2a;
+    color: white;
+    box-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+    transform: translateY(-5px);
+}
+
+footer {
+    background-color: #2a2a2a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+footer .social-links a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif; /* Varsayılan font */
+}
+
+footer .social-links a:hover {
+    transform: translateY(-5px); /* Hafif yükselme */
+    color: #00ffcc; /* Renk değişimi */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6); /* Gölgeleme efekti */
+}
+
+footer .social-links img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+footer .social-links span {
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace; /* Farklı font */
+}
+
+/* Farklı fontlar ve efektler */
+footer .social-links a:nth-child(1) {
+    font-family: 'Verdana', sans-serif; /* YouTube için farklı yazı tipi */
+}
+
+footer .social-links a:nth-child(2) {
+    font-family: 'Georgia', serif; /* Instagram için farklı yazı tipi */
+}
+
+footer .social-links a:nth-child(3) {
+    font-family: 'Tahoma', sans-serif; /* TikTok için farklı yazı tipi */
+}
+/* Genel stil ayarları */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #2a2a2a;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+header .logo-container {
+    display: flex;
+    align-items: center;
+}
+
+header .logo-container img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
+}
+
+nav ul li a:hover {
+    background-color: #00ffcc;
+    color: #2a2a2a;
+    box-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc;
+    transform: translateY(-5px);
+}
+
+/* Hakkında bölüm stil ayarları */
+.about {
+    background-color: #fff;
+    color: #333;
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 900px;
+    line-height: 1.8;
+}
+
+.about h2 {
+    font-size: 36px;
+    font-family: 'Georgia', serif;
+    color: #00ffcc;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 5px rgba(0, 255, 255, 0.6);
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 18px;
+    color: #555;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+    background-color: #2a2a2a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+footer .social-links a {
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-family: 'Arial', sans-serif;
+}
+
+footer .social-links a:hover {
+    transform: translateY(-5px);
+    color: #00ffcc;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+footer .social-links img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+footer .social-links span {
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Mobil uyumluluk */
+@media screen and (max-width: 768px) {
+    .about {
+        padding: 30px 15px;
+    }
+
+    .about h2 {
+        font-size: 28px;
+    }
+
+    .about p {
+        font-size: 16px;
+    }
+}

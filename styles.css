@@ -83,6 +83,9 @@ nav ul li a:hover {
     text-align: center;
     width: 200px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column; /* Butonları dikeyde hizalayacak */
+    justify-content: space-between; /* Her bir öğe arasında eşit boşluk bırakacak */
 }
 
 .music-item img {
@@ -92,8 +95,8 @@ nav ul li a:hover {
 
 .music-item .download-btn {
     display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
+    margin-top: auto; /* Butonun alt tarafa çekilmesini sağlar */
+    padding: 8px 16px; /* Butonun iç padding'ini küçültüyoruz */
     background-color: #00ffcc;
     color: #2a2a2a;
     text-decoration: none;
@@ -102,6 +105,9 @@ nav ul li a:hover {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
     transition: all 0.3s ease;
+    text-align: center;
+    width: auto; /* Genişlik sınırlaması koymuyoruz, doğal genişlikte kalacak */
+    max-width: 100%; /* Genişlik çok fazla büyümesin diye %100'e ayarlandı */
 }
 
 .music-item .download-btn:hover {
@@ -165,69 +171,6 @@ footer .social-links a:nth-child(2) {
 
 footer .social-links a:nth-child(3) {
     font-family: 'Tahoma', sans-serif; /* TikTok için farklı yazı tipi */
-}
-/* Genel stil ayarları */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    line-height: 1.6;
-}
-
-header {
-    background-color: #2a2a2a;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-header .logo-container {
-    display: flex;
-    align-items: center;
-}
-
-header .logo-container img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-header h1 {
-    font-size: 24px;
-    font-weight: normal;
-}
-
-nav ul {
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    font-weight: bold;
-    box-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
-}
-
-nav ul li a:hover {
-    background-color: #00ffcc;
-    color: #2a2a2a;
-    box-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc, 0 0 40px #00ffcc;
-    transform: translateY(-5px);
 }
 
 /* Hakkında bölüm stil ayarları */

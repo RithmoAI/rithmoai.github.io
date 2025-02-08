@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Oluşturucu</title>
+    <title>Metinle Video Simülasyonu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            text-align: center;
         }
         .container {
             max-width: 800px;
@@ -40,73 +41,77 @@
         button:hover {
             background-color: #4cae4c;
         }
-        #videoContainer {
-            margin-top: 30px;
-            display: none;
+        canvas {
+            margin-top: 20px;
+            background-color: #eaeaea;
+            width: 100%;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Video İçeriği Oluştur</h1>
+        <h1>Metinle Video Simülasyonu</h1>
         <textarea id="textInput" placeholder="Buraya metninizi yazın..."></textarea><br>
-        <button onclick="generateVideo()">Video Oluştur</button>
+        <button onclick="startAnimation()">Animasyonu Başlat</button>
         
-        <div id="videoContainer">
-            <h2>Oluşturduğunuz Video:</h2>
-            <video id="generatedVideo" controls width="100%"></video>
-        </div>
+        <canvas id="canvas"></canvas>
     </div>
 
     <script>
-        function generateVideo() {
-            var text = document.getElementById('textInput').value;
+        // Canvas ve kontekst alın
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Video benzeri bir animasyon için ayarları yap
+        let text = '';
+        let frame = 0;
+        const frameRate = 30; // FPS
+        let interval;
+
+        // Canvas boyutları
+        canvas.width = 1280;
+        canvas.height = 720;
+
+        function startAnimation() {
+            // Kullanıcıdan metni al
+            text = document.getElementById('textInput').value;
             if (text === "") {
                 alert("Lütfen bir metin girin.");
                 return;
             }
 
-            // Canvas oluşturuluyor
-            var canvas = document.createElement("canvas");
-            var ctx = canvas.getContext("2d");
+            // Zamanlayıcıyı başlat
+            frame = 0;
+            interval = setInterval(animateText, 1000 / frameRate);
+        }
 
-            canvas.width = 1280; // Video genişliği
-            canvas.height = 720; // Video yüksekliği
+        function animateText() {
+            // Canvas'ı temizle
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Video elementini oluştur
-            var video = document.createElement("video");
-            var stream = canvas.captureStream(30); // 30 fps ile stream başlatıyoruz
-            video.srcObject = stream;
+            // Arka plan
+            ctx.fillStyle = "#FFFFFF";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Video dosyasını yükle
-            var frames = [];
-            var frameDuration = 1000 / 30; // 30 fps
-            var currentFrame = 0;
-            var totalFrames = 100; // 100 frame oluşturulacak
+            // Yazı stilleri
+            ctx.fillStyle = "#000000";
+            ctx.font = "50px Arial";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
 
-            function drawFrame() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#FFFFFF";
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = "#000000";
-                ctx.font = "30px Arial";
-                ctx.textAlign = "center";
-                ctx.textBaseline = "middle";
-                ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+            // Ekranda metni yavaşça göstermek için animasyon
+            let displayedText = text.slice(0, Math.floor((frame / 100) * text.length));  // Texti yavaşça yazdırma
+            ctx.fillText(displayedText, canvas.width / 2, canvas.height / 2);
 
-                frames.push(canvas.toDataURL());
-                currentFrame++;
+            // Frame sayısını artır
+            frame++;
 
-                if (currentFrame < totalFrames) {
-                    setTimeout(drawFrame, frameDuration);
-                } else {
-                    video.src = URL.createObjectURL(new Blob(frames, { type: 'video/webm' }));
-                    document.getElementById("videoContainer").style.display = "block";
-                }
+            // Animasyon tamamlandığında durdur
+            if (frame > 100) {
+                clearInterval(interval);
             }
-
-            drawFrame();
         }
     </script>
 

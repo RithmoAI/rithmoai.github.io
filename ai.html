@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Oluşturucu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        #videoContainer {
+            margin-top: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Video İçeriği Oluştur</h1>
+        <textarea id="textInput" placeholder="Buraya metninizi yazın..."></textarea><br>
+        <button onclick="generateVideo()">Video Oluştur</button>
+        
+        <div id="videoContainer">
+            <h2>Oluşturduğunuz Video:</h2>
+            <video id="generatedVideo" controls width="100%"></video>
+        </div>
+    </div>
+
+    <script>
+        function generateVideo() {
+            var text = document.getElementById('textInput').value;
+            if (text === "") {
+                alert("Lütfen bir metin girin.");
+                return;
+            }
+
+            // Canvas oluşturuluyor
+            var canvas = document.createElement("canvas");
+            var ctx = canvas.getContext("2d");
+
+            canvas.width = 1280; // Video genişliği
+            canvas.height = 720; // Video yüksekliği
+
+            // Video elementini oluştur
+            var video = document.createElement("video");
+            var stream = canvas.captureStream(30); // 30 fps ile stream başlatıyoruz
+            video.srcObject = stream;
+
+            // Video dosyasını yükle
+            var frames = [];
+            var frameDuration = 1000 / 30; // 30 fps
+            var currentFrame = 0;
+            var totalFrames = 100; // 100 frame oluşturulacak
+
+            function drawFrame() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "#FFFFFF";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "#000000";
+                ctx.font = "30px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+                frames.push(canvas.toDataURL());
+                currentFrame++;
+
+                if (currentFrame < totalFrames) {
+                    setTimeout(drawFrame, frameDuration);
+                } else {
+                    video.src = URL.createObjectURL(new Blob(frames, { type: 'video/webm' }));
+                    document.getElementById("videoContainer").style.display = "block";
+                }
+            }
+
+            drawFrame();
+        }
+    </script>
+
+</body>
+</html>
